@@ -14,7 +14,7 @@ class Invoice {
     $this->estimatedTimeInMinutes = $estimatedTimeInMinutes;
   }
 
-  public function printInvoice() {
+  public function printInvoice(): void {
     echo '------------------------------' . PHP_EOL;
     echo 'Date: ' . $this->orderTime->format('Y-m-d H:i:s') . PHP_EOL;
     echo 'Final Price: $' . $this->finalPrice . PHP_EOL;

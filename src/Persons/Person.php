@@ -1,7 +1,7 @@
 <?php
 namespace Persons;
 
-class Person {
+abstract class Person {
   protected string $name;
   protected int $age;
   protected string $address;

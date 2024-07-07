@@ -29,6 +29,4 @@ abstract class FoodItem {
   public function getCookingTime(): int {
     return $this->cookingTime;
   }
-
-  abstract public static function getCategory(): string;
 }

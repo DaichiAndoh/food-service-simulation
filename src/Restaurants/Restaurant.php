@@ -18,7 +18,7 @@ class Restaurant {
     return $this->menu;
   }
 
-  private function getChef(): mixed {
+  private function getChef(): Chef {
     for ($i = 0; count($this->employees); $i++) {
       if ($this->employees[$i] instanceof Chef) {
         return $this->employees[$i];
@@ -27,7 +27,7 @@ class Restaurant {
     throw new Exception('Chef does not exist.');
   }
 
-  private function getCashier(): mixed {
+  private function getCashier(): Cashier {
     for ($i = 0; count($this->employees); $i++) {
       if ($this->employees[$i] instanceof Cashier) {
         return $this->employees[$i];

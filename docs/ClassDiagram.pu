@@ -1,0 +1,107 @@
+@startuml food service simulation
+class Restaurant {
+  -List<FoodItem> menu
+  -List<Employee> employees
+  +getMenu(): List<FoodItem>
+  -getChef(): Chef
+  -getCashier(): Cashier
+  +order(List<Map<String, Integer>> orderFoods): Invoice
+}
+
+
+abstract class Person {
+ #String name
+ #Integer age
+ #address: String
+ +getName(): String
+}
+
+class Customer {
+  -Map<String, Integer> interestedFoodsMap
+  +order(Restaurant restaurant): Invoice
+  -getOrderFoods(Restaurant restaurant): List<Map<String, Integer>>
+  -printForOrder(List<Map<String, Integer>> orderFoods): void
+}
+
+class Employee {
+  #Integer employeeId
+  #Double salary
+  +getEmployeeId(): Integer
+}
+
+class Chef {
+  +prepareFood(FoodOrder foodOrder): void
+}
+
+class Cashier {
+  +generateOrder(List<Map<String, Integer>> orderFoods, Restaurant restaurant): FoodOrder
+  +generateInvoice(FoodOrder foodOrder): Invoice
+}
+
+
+abstract class FoodItem {
+ #String name
+ #String description 
+ #Integer price
+ #Integer cookingTime
+ +getName(): String
+ +getDescription(): String
+ +getPrice(): Integer
+ +getCookingTime(): Integer
+}
+
+class CheeseBurger {
+  -{static} String CATEGORY
+  +{static} getCategory(): String
+}
+
+class Fettuccine {
+  -{static} String CATEGORY
+  +{static} getCategory(): String
+}
+
+class HawaiianPizza {
+  -{static} String CATEGORY
+  +{static} getCategory(): String
+}
+
+class Spaghetti {
+  -{static} String CATEGORY
+  +{static} getCategory(): String
+}
+
+
+class FoodOrder {
+  -List<FoodItem>: items
+  -DateTime: orderTime
+  +getItems(): List<FoodItem>
+  +getOrderTime(): DateTime
+  +calcTotalPrice(): Double
+  +calcTotalCookingTime(): Integer
+}
+
+
+class Invoice {
+  -Double finalPrice
+  -DateTime orderTime
+  -Integer estimatedTimeInMinutes
+  +printInvoice(): void
+}
+
+
+Restaurant o-- Employee
+Restaurant o-- FoodItem
+
+Person <|-- Customer
+Person <|-- Employee
+Employee <|-- Chef
+Employee <|-- Cashier
+
+FoodItem <|-- CheeseBurger
+FoodItem <|-- Fettuccine
+FoodItem <|-- HawaiianPizza
+FoodItem <|-- Spaghetti
+
+FoodOrder o-- FoodItem
+Invoice -- FoodOrder
+@enduml

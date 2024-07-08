@@ -1,0 +1,26 @@
+@startuml food service simulation
+Customer -> Restaurant: オーダー
+|||
+
+activate Restaurant
+Restaurant -> Cashier: オーダー作成依頼
+Cashier -> FoodOrder: オーダー作成
+FoodOrder --> Cashier
+Cashier --> Restaurant: オーダー完了
+|||
+|||
+
+Restaurant -> Chef: 調理依頼
+Chef --> Restaurant
+|||
+|||
+
+Restaurant -> Cashier: 請求書発行依頼
+Cashier -> Invoice: 請求書発行
+Invoice --> Cashier
+Cashier --> Restaurant: 請求書発行完了
+|||
+
+Restaurant -> Customer: 請求書提示
+deactivate Restaurant
+@enduml

@@ -6,3 +6,11 @@
 $ cd food-service-simulation
 $ php src/main.php
 ```
+
+## Class Diagram
+
+![ClassDiagram](/docs/ClassDiagram.png)
+
+## Sequence Diagram
+
+![SequenceDiagram](/docs/SequenceDiagram.png)
